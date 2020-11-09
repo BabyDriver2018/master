@@ -19,11 +19,14 @@ Route::get('/', function () {
 });
 Route::get('/registrar' ,  [App\Http\Controllers\ClienteController::class, 'index']);
 Route::get('/cliente/{id}' ,  [App\Http\Controllers\ClienteController::class, 'show']);
+Route::get('/pagar/{id}' ,  [App\Http\Controllers\PagoController::class, 'pagar']);
 Route::get('/deuda' ,  [App\Http\Controllers\ClienteController::class, 'deuda']);
 Route::post('/agregarcliente' ,  [App\Http\Controllers\ClienteController::class, 'store']);
 Route::post('/home' ,  [App\Http\Controllers\ClienteController::class, 'update']);
+Route::get('/pagado/{id}' ,  [App\Http\Controllers\PagoController::class, 'pagado']);
 
-
+Route::get('/prueba' ,  [App\Http\Controllers\PagoController::class, 'cobro']);
+Route::get('test', [App\Http\Controllers\PagoController::class, 'testAutomatic']);
 
 Auth::routes();
 

@@ -23,7 +23,7 @@ class CreateClientesTable extends Migration
             $table->double('pago_mes');
             $table->string('servicio');
             $table->string('agencia');
-            $table->integer('deuda');
+            $table->integer('deuda')->default(0);
             $table->timestamps();
         });
     }

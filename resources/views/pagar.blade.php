@@ -177,54 +177,37 @@ The above copyright notice and this permission notice shall be included in all c
                               </div>
                               {{-- tabla --}}
                               <div class="card-body">
-                              <div class="table-responsive">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Contrato</th>
-                                            <th scope="col">Abonado/Nombres</th>
-                                            <th scope="col">Propiedad</th>
-                                            <th scope="col">Sector</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Pago Mensual</th>
-                                            <th scope="col">Servicio</th>
-                                            <th scope="col">Agencia</th>
-                                            <th scope="col">Deuda</th>
-                                            <th scope="col">Accion</th>
-                                            <th scope="col">Pagar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                            @foreach ($clts as $cliente)
+                              <h3>Cliente: {{ $cliente->abonado }}</h3>
+                                  
+                                  <form>
+                                    <table class="table">
+                                        <thead class="thead-dark">
                                             <tr>
-                                                <th scope="row">{{ $cliente->id }}</th>
-                                                <td>{{ $cliente->contrato }}</td>
-                                                <td>{{ $cliente->abonado }}</td>
-                                                <td>{{ $cliente->propiedad }}</td>
-                                                <td>{{ $cliente->sector }}</td>
-                                                <?php if ($cliente->estado == 1) {
-                                                  echo '<td BGCOLOR="#00FF00">ACTIVO</td>';
-                                              } else {
-                                                  echo '<td BGCOLOR="#FF0000">INACTIVO</td>';
-                                              } ?>
-                                                <td>{{ $cliente->pago_mes }}</td>
-                                                <td>{{ $cliente->servicio }} Mega</td>
-                                                <td>{{ $cliente->agencia }}</td>
-                                                <td>{{ $cliente->deuda}}</td>
-                                                {{-- <td>{{ $cliente->deuda }}</td> --}}
-                                                <td> 
-                                                  <button onclick="window.location='../public/cliente/<?= $cliente->id ?>'" method="get" name="edit" type="button" class="btn btn-primary">Editar</button> 
-                                                </td>
-                                                <td> 
-                                                  <button onclick="window.location='../public/pagar/<?= $cliente->id ?>'" method="get" type="button" class="btn btn-primary">Pagar</button> 
-                                                </td>
-                                              </tr>
-                                            @endforeach
-                                      </tbody>
-                                  </table>
-                              </div>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Monto</th>
+                                                <th scope="col">Pago</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                @foreach ($pago as $pg)
+                                                <tr>
+                                                    <th scope="row">{{ $pg->id }}</th>
+                                                    <td>{{ $pg->mes }} / {{ $pg->anio}}</td>
+                                                    <td>{{ $pg->monto }}</td>
+                                                    <td> 
+                                                        <button onclick="window.location='../pagado/<?= $pg->cliente_id ?>'" method="get" type="button" class="btn btn-danger">Pagar</button> 
+                                                      
+                                                    </td>
+                                                  </tr>
+                                                @endforeach
+                                          </tbody>
+                                      </table>
+                                  </form>
+
+                               
                               </div>
                           </div>
                       </div>

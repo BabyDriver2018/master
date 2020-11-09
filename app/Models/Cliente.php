@@ -9,10 +9,12 @@ class Cliente extends Model
 {
     protected $table = 'clientes';
     protected $primaryKey = 'id';
-    public $timestamps=false;
+    
     protected $fillable = ['id', 'contrato', 'abonado','propiedad', 'sector','estado','pagomes', 'servicio','agencia'];
+    
     use HasFactory;
 
+    
     
     public function pagos()
     {

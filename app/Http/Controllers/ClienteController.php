@@ -20,22 +20,6 @@ class ClienteController extends Controller
         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //dd($request);
@@ -58,9 +42,11 @@ class ClienteController extends Controller
         elseif($aux == 3){
             $cliente->pago_mes = 90;
         }
-        $cliente->deuda =0;
+        
         
         $cliente->save();
+
+        
 
         return redirect('/home');
     }
@@ -134,16 +120,11 @@ class ClienteController extends Controller
             $pagomes[] = $deudas['pago_mes'];
         }
         //dd($pagomes);
+        //dd($pagomes);
         for( $i=0 ; $i<count($pagomes) ; $i++ ){
-            $cliente = Cliente::all()->where('deuda','>=',($pagomes[$i]*2));
-            
-            
+            $clts = Cliente::all()->where('deuda','>',0);
         }
-        dd($cliente);
-        //DB:select();
-        
-        //dd($allclientes[0]);
         //dd($deuda);
-        return view('home',compact('clientes'));
+        return view('deuda',compact('clts'));
     }
 }

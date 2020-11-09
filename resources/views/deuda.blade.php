@@ -159,7 +159,7 @@ The above copyright notice and this permission notice shall be included in all c
                               <div class="card-header card-header-primary">
                                   <div class="row">
                                       <div class="col-10">
-                                          <h4 class="card-title ">Tabla de Clientes</h4>
+                                          <h4 class="card-title ">Tabla de Deudores</h4>
                                       </div>
                                       <div class="col-2">
                                           <a href="{{ url('/registrar') }}"
