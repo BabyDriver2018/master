@@ -37,6 +37,8 @@ class TestCron extends Command
      */
     public function handle()
     {
-        return 0;
+        $r=20;
+        dd($r);
+        sleep(1000);
     }
 }

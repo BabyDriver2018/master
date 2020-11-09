@@ -41,7 +41,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-            <div class="logo"><a href="#" class="simple-text logo-normal">
+            <div class="logo"><a href="{{url('/home')}}" class="simple-text logo-normal">
                     FIBER
                 </a>
 
@@ -53,9 +53,9 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="./index.php">
+                        <a class="nav-link" href="{{url('/home')}}">
                             <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
+                            <p>INICIO</p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -166,12 +166,8 @@ The above copyright notice and this permission notice shall be included in all c
                                               class="btn btn-primary btn-lg active">REGISTRAR</a>
                                       </div>
                                       <div class="col-2">
-                                          <a href="{{ url('/deuda') }}"
-                                              class="btn btn-primary btn-lg active">DEUDORES</a>
-                                      </div>
-                                      <div class="col-2">
                                         <a href="{{ url('/home') }}"
-                                            class="btn btn-primary btn-lg active">Todos los Clientes</a>
+                                            class="btn btn-primary btn-lg active">Clientes</a>
                                     </div>
                                   </div>
                               </div>
@@ -198,7 +194,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     <td>{{ $pg->mes }} / {{ $pg->anio}}</td>
                                                     <td>{{ $pg->monto }}</td>
                                                     <td> 
-                                                        <button onclick="window.location='../pagado/<?= $pg->cliente_id ?>'" method="get" type="button" class="btn btn-danger">Pagar</button> 
+                                                        <button onclick="window.location='../pagado/<?= $pg->id ?>/<?= $pg->cliente_id?>'" method="get" type="button" class="btn btn-danger">Pagar</button> 
                                                       
                                                     </td>
                                                   </tr>

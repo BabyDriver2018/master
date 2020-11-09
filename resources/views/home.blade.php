@@ -41,7 +41,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-            <div class="logo"><a href="#" class="simple-text logo-normal">
+            <div class="logo"><a href="{{url('/home')}}" class="simple-text logo-normal">
                     FIBER
                 </a>
 
@@ -53,9 +53,9 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="./index.php">
+                        <a class="nav-link" href="{{url('/home')}}">
                             <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
+                            <p>INICIO</p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -165,14 +165,6 @@ The above copyright notice and this permission notice shall be included in all c
                                           <a href="{{ url('/registrar') }}"
                                               class="btn btn-primary btn-lg active">REGISTRAR</a>
                                       </div>
-                                      <div class="col-2">
-                                          <a href="{{ url('/deuda') }}"
-                                              class="btn btn-primary btn-lg active">DEUDORES</a>
-                                      </div>
-                                      <div class="col-2">
-                                        <a href="{{ url('/home') }}"
-                                            class="btn btn-primary btn-lg active">Todos los Clientes</a>
-                                    </div>
                                   </div>
                               </div>
                               {{-- tabla --}}
@@ -190,7 +182,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <th scope="col">Pago Mensual</th>
                                             <th scope="col">Servicio</th>
                                             <th scope="col">Agencia</th>
-                                            <th scope="col">Deuda</th>
+                                            {{-- <th scope="col">Deuda</th> --}}
                                             <th scope="col">Accion</th>
                                             <th scope="col">Pagar</th>
                                         </tr>
@@ -212,7 +204,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <td>{{ $cliente->pago_mes }}</td>
                                                 <td>{{ $cliente->servicio }} Mega</td>
                                                 <td>{{ $cliente->agencia }}</td>
-                                                <td>{{ $cliente->deuda}}</td>
+                                                {{-- <td>{{ $cliente->deuda}}</td> --}}
                                                 {{-- <td>{{ $cliente->deuda }}</td> --}}
                                                 <td> 
                                                   <button onclick="window.location='../public/cliente/<?= $cliente->id ?>'" method="get" name="edit" type="button" class="btn btn-primary">Editar</button> 
@@ -602,7 +594,6 @@ function closeForm() {
   });
  });
   </script>
-
   
 </body>
 

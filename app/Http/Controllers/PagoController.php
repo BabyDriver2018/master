@@ -16,19 +16,29 @@ class PagoController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-  
+    
 
     public function pagar($id){
-
+        
         //dd("flugsk");
-        $pago = Pago::all()->where('cliente_id',$id);
-        $cliente = Cliente::find($id);
+        $pago = Pago::all()->where('cliente_id',$id)->where('estado','=',1);
+        
+        $cliente= Cliente::find($id);
         return view ('pagar', compact('pago','cliente'));
     }
-    public function pagado($id){
-        dd($id);
+    public function pagado($idpago, $idcliente){
+        $timestamp = date("Y-m-d H:i:s");
+        DB::select("UPDATE pagos SET estado=0,updated_at='$timestamp' WHERE id=?",[$idpago]);
+
+        $pago = Pago::all()->where('cliente_id',$idcliente)->where('estado','=',1);
+        
+        $cliente = Cliente::findOrFail($idcliente);
+        
+        return view('pagar',compact('pago','cliente'));
     }
 
+
+    //desabilitar un cliente q deba mas de 2 meses
     public function testAutomatic(){
         $cl= Cliente::all();
         $cl->toArray();
@@ -38,13 +48,13 @@ class PagoController extends Controller
         //dd($clss);
         for($i=0; $i<count($clss); $i++){
             //dd($clss[$i]);
-            $clientes = DB::select("UPDATE clientes SET estado=0 WHERE deuda=?",[($clss[$i]*2)]);
-            dd($clientes);
+            DB::select("UPDATE clientes SET estado=0 WHERE deuda=?",[($clss[$i]*2)]);
+            
         }
-        dd($clientes);
-
-
+        
     }
+    
+    //para generar datos en la tabla pago cada q pasa el mes
     public function cobro(){
         $cliente = Cliente::all();
         $cliente->toArray();
@@ -63,8 +73,6 @@ class PagoController extends Controller
             $pgmes[]=$cl['pago_mes'];
         }
         
-        
-            // dd(count($cliente));
             for($i=0 ; $i < count($cle); $i++){
                 $cobro = new Pago();
                 $cobro->mes = $mes;

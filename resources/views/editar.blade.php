@@ -39,7 +39,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-		<div class="logo"><a href="#" class="simple-text logo-normal">
+		<div class="logo"><a href="{{url('/home')}}" class="simple-text logo-normal">
           FIBER
         </a>
 		
@@ -51,9 +51,9 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active">
-            <a class="nav-link" href="./index.php">
+            <a class="nav-link" href="{{url('/home')}}">
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <p>INICIO</p>
             </a>
           </li>
           <li class="nav-item ">

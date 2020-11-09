@@ -111,20 +111,5 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function deuda()
-    {   
-
-        $allclientes = Cliente::all();
-        $allclientes->toArray();
-        foreach($allclientes as $deudas){
-            $pagomes[] = $deudas['pago_mes'];
-        }
-        //dd($pagomes);
-        //dd($pagomes);
-        for( $i=0 ; $i<count($pagomes) ; $i++ ){
-            $clts = Cliente::all()->where('deuda','>',0);
-        }
-        //dd($deuda);
-        return view('deuda',compact('clts'));
-    }
+    
 }
