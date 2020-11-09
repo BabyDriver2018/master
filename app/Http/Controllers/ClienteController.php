@@ -43,7 +43,6 @@ class ClienteController extends Controller
             $cliente->pago_mes = 90;
         }
         
-        
         $cliente->save();
 
         
